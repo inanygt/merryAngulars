@@ -1,3 +1,27 @@
-<input class="form-control my-3" [(ngModel)]="todo" type="text" />
-<button (click)="getTodo()" class="btn btn-primary">submit</button>
-<div id="items"></div>
+<input
+  class="form-control my-3"
+  #inputTodo
+  type="text"
+  [(ngModel)]="emptyInput"
+/>
+<button (click)="submitTodo(inputTodo.value)" class="btn btn-primary">
+  submit
+</button>
+
+<br />
+<br />
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let task of tasks">
+    {{ task.id }} - {{ task.name }}
+
+    <button
+      #delBtn
+      (click)="delRequest(task.id)"
+      id="delButton"
+      class="btn btn-danger"
+    >
+      X
+    </button>
+  </li>
+</ul>
