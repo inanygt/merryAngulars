@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../shared/service.service';
-import { Task } from '../model/task';
 
 @Component({
   selector: 'app-open',
@@ -9,32 +8,18 @@ import { Task } from '../model/task';
 })
 export class OpenComponent implements OnInit {
   ServiceService = new ServiceService();
-  url: string = 'http://localhost:3000/todos';
-
   emptyInput!: string;
-
-  todoObj: Task = {
-    id: 0,
-    name: '',
-    status: false,
-  };
-
   tasks: any;
 
   submitTodo(todo: string) {
-    this.todoObj = {
-      id: 0,
-      name: todo,
-      status: false,
-    };
-
-    fetch(this.url, {
-      method: 'POST',
-      body: JSON.stringify(this.todoObj),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    this.ServiceService.submitTodo(todo);
     this.showTodo();
-    this.emptyInput = '';
+    this.emptyInput = ' ';
+  }
+
+  checkTodo(taskId: number) {
+    this.ServiceService.checkTodo(taskId);
+    this.showTodo();
   }
 
   constructor() {}
@@ -47,18 +32,8 @@ export class OpenComponent implements OnInit {
   }
 
   delRequest(id: number) {
-    console.log(id);
-    return fetch(this.url + '/' + id, {
-      method: 'DELETE',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        this.showTodo();
-        console.log(data);
-      });
-
-    // .then(this.showTodo())
-    // .catch();
+    this.ServiceService.delRequest(id);
+    this.showTodo();
   }
 
   // ngoninit is a lifecycle hook
@@ -67,10 +42,3 @@ export class OpenComponent implements OnInit {
     this.showTodo();
   }
 }
-
-// return fetch(this.url + '/' + id, {
-//   method: 'DELETE',
-// })
-//   .then((res) => res.json())
-//   .then(this.showTodo())
-//   .catch();
