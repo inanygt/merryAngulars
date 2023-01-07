@@ -11,20 +11,20 @@
 <div class="my-3">
   <ul class="list-group">
     <ng-container>
-      <li class="list-group-item" *ngFor="let doneTask of tasks">
+      <li class="list-group-item" *ngFor="let task of tasks">
         <input
-          (change)="checkTodo(doneTask.id)"
+          (change)="checkTodo(task.id)"
           type="checkbox"
           class="form-check-input"
           value=""
           id="flexCheckDefault"
         />
 
-        {{ doneTask.name }}
+        {{ task.name }}
 
         <button
           #delBtn
-          (click)="delRequest(doneTask.id)"
+          (click)="delTask(task.id)"
           id="delButton"
           class="btn btn-danger"
         >

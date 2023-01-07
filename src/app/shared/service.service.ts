@@ -36,7 +36,7 @@ export class ServiceService {
   }
 
   // Delete Todo
-  delRequest(id: number) {
+  delTasks(id: number) {
     return fetch(this.url + '/' + id, {
       method: 'DELETE',
     }).then((res) => res.json());

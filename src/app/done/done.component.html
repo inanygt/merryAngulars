@@ -5,6 +5,15 @@
     <ng-container>
       <li class="list-group-item" *ngFor="let task of tasks">
         {{ task.name }}
+
+        <button
+          #delBtn
+          (click)="delTask(task.id)"
+          id="delButton"
+          class="btn btn-danger"
+        >
+          X
+        </button>
       </li>
     </ng-container>
   </ul>

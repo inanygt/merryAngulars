@@ -11,8 +11,18 @@ export class DoneComponent implements OnInit {
 
   showTodo() {
     this.ServiceService.getApi().then((data) => {
-      this.tasks = data;
+      const doneTasks = data.filter((data: any) => {
+        return data.status == true;
+      });
+      this.tasks = doneTasks;
+      // Filtering todos that are done
     });
+  }
+
+  // Delete Todos
+  delTask(id: number) {
+    this.ServiceService.delTasks(id);
+    this.showTodo();
   }
 
   ngOnInit(): void {

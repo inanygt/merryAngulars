@@ -10,9 +10,7 @@ export class OpenComponent implements OnInit {
   ServiceService = new ServiceService();
   emptyInput!: string;
   tasks: any;
-  task: any;
   doneTodos: any;
-  filteredTasks: any;
 
   constructor() {}
 
@@ -26,16 +24,17 @@ export class OpenComponent implements OnInit {
   // Show Todos
   showTodo() {
     this.ServiceService.getApi().then((data) => {
-      const filteredData = data.filter(function (data: any) {
+      // Filtering the done tasks
+      const doneTasks = data.filter((data: any) => {
         return data.status == false;
       });
-      this.tasks = filteredData;
+      this.tasks = doneTasks;
     });
   }
 
   // Delete Todos
-  delRequest(id: number) {
-    this.ServiceService.delRequest(id);
+  delTask(id: number) {
+    this.ServiceService.delTasks(id);
     this.showTodo();
   }
 
@@ -43,12 +42,8 @@ export class OpenComponent implements OnInit {
   checkTodo(taskId: number) {
     this.ServiceService.checkTodo(taskId);
     this.showTodo();
-    console.log('Task ' + taskId + ' is clicked');
-    // this.displayTodo = !this.displayTodo;
   }
 
-  // ngoninit is a lifecycle hook
-  // it is called when the component is initialized
   ngOnInit(): void {
     this.showTodo();
   }
