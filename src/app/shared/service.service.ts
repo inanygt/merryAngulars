@@ -5,17 +5,19 @@ import { Task } from '../model/task';
   providedIn: 'root',
 })
 export class ServiceService {
+  url: string = 'http://localhost:3000/todos';
+
   todoObj: Task = {
     id: 0,
     name: '',
     status: false,
   };
 
-  url: string = 'http://localhost:3000/todos';
   constructor() {}
 
+  // Fething api
   getApi() {
-    return fetch(this.url);
+    return fetch(this.url).then((res) => res.json());
   }
 
   // Submit Todo
@@ -35,7 +37,6 @@ export class ServiceService {
 
   // Delete Todo
   delRequest(id: number) {
-    console.log(id);
     return fetch(this.url + '/' + id, {
       method: 'DELETE',
     }).then((res) => res.json());
@@ -43,8 +44,6 @@ export class ServiceService {
 
   // check Todo
   checkTodo(taskId: number) {
-    console.log(taskId + ' is done');
-
     fetch(this.url + '/' + taskId, {
       method: 'PATCH',
       body: JSON.stringify({
@@ -52,8 +51,5 @@ export class ServiceService {
       }),
       headers: { 'content-Type': 'application/json' },
     });
-    if (this.todoObj.status == true) {
-      console.log('yes its true');
-    }
   }
 }

@@ -10,30 +10,41 @@ export class OpenComponent implements OnInit {
   ServiceService = new ServiceService();
   emptyInput!: string;
   tasks: any;
-
-  submitTodo(todo: string) {
-    this.ServiceService.submitTodo(todo);
-    this.showTodo();
-    this.emptyInput = ' ';
-  }
-
-  checkTodo(taskId: number) {
-    this.ServiceService.checkTodo(taskId);
-    this.showTodo();
-  }
+  task: any;
+  doneTodos: any;
+  filteredTasks: any;
 
   constructor() {}
-  showTodo() {
-    this.ServiceService.getApi()
-      .then((res) => res.json())
-      .then((data) => {
-        this.tasks = data;
-      });
+
+  // Submit Todos
+  submitTodo(todo: string) {
+    this.ServiceService.submitTodo(todo);
+    this.emptyInput = ' ';
+    this.showTodo();
   }
 
+  // Show Todos
+  showTodo() {
+    this.ServiceService.getApi().then((data) => {
+      const filteredData = data.filter(function (data: any) {
+        return data.status == false;
+      });
+      this.tasks = filteredData;
+    });
+  }
+
+  // Delete Todos
   delRequest(id: number) {
     this.ServiceService.delRequest(id);
     this.showTodo();
+  }
+
+  // Check todo
+  checkTodo(taskId: number) {
+    this.ServiceService.checkTodo(taskId);
+    this.showTodo();
+    console.log('Task ' + taskId + ' is clicked');
+    // this.displayTodo = !this.displayTodo;
   }
 
   // ngoninit is a lifecycle hook

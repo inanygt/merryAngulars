@@ -8,26 +8,29 @@
   submit
 </button>
 
-<br />
-<br />
+<div class="my-3">
+  <ul class="list-group">
+    <ng-container>
+      <li class="list-group-item" *ngFor="let doneTask of tasks">
+        <input
+          (change)="checkTodo(doneTask.id)"
+          type="checkbox"
+          class="form-check-input"
+          value=""
+          id="flexCheckDefault"
+        />
 
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let task of tasks">
-    <input
-      *ngIf="task.status == true"
-      (change)="checkTodo(task.id)"
-      type="checkbox"
-      class="form-check-input"
-    />
-    {{ task.name }}
+        {{ doneTask.name }}
 
-    <button
-      #delBtn
-      (click)="delRequest(task.id)"
-      id="delButton"
-      class="btn btn-danger"
-    >
-      X
-    </button>
-  </li>
-</ul>
+        <button
+          #delBtn
+          (click)="delRequest(doneTask.id)"
+          id="delButton"
+          class="btn btn-danger"
+        >
+          X
+        </button>
+      </li>
+    </ng-container>
+  </ul>
+</div>
