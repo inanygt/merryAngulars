@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../shared/service.service';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-open',
@@ -11,6 +12,9 @@ export class OpenComponent implements OnInit {
   emptyInput!: string;
   tasks: any;
   doneTodos: any;
+
+  // faCoffee = faCoffee;
+  faPlus = faPlus;
 
   constructor() {}
 

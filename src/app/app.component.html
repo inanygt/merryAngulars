@@ -1,13 +1,18 @@
-<div class="container transparent-bg my-3">
-  <div class="row">
-    <div class="col">
-      <h1 id="heading-one">Merry Angulars</h1>
+<div class="transparent-bg">
+  <div class="container my-3">
+    <div class="row">
+      <div class="col">
+        <h1 id="heading-one">
+          <span class="text-danger">Merry</span>
+
+          <span class="text-success">Angulars</span>
+        </h1>
+      </div>
+      <div class="col col-auto">
+        <a class="btn btn-danger m-1" routerLink="open">Todo</a>
+        <a class="btn btn-success m-1" routerLink="done">Done</a>
+      </div>
     </div>
-    <div class="col col-auto">
-      <a class="btn btn-danger m-1" routerLink="open">Todo</a>
-      <a class="btn btn-success m-1" routerLink="done">Done</a>
-    </div>
+    <router-outlet></router-outlet>
   </div>
-  <!-- router outlet! hier worden alle routes/componenten geprojecteerd -->
-  <router-outlet></router-outlet>
 </div>

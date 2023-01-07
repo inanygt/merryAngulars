@@ -1,37 +1,7 @@
 {
   "todos": [
     {
-      "id": 2,
-      "name": " workout",
-      "status": true
-    },
-    {
-      "id": 4,
-      "name": " play guitar",
-      "status": true
-    },
-    {
-      "id": 5,
-      "name": " walk",
-      "status": true
-    },
-    {
-      "id": 6,
-      "name": "workout",
-      "status": true
-    },
-    {
-      "id": 7,
-      "name": "test",
-      "status": true
-    },
-    {
-      "id": 8,
-      "name": "Workout",
-      "status": true
-    },
-    {
-      "id": 9,
+      "id": 1,
       "name": "test",
       "status": false
     }

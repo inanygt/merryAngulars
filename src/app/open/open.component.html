@@ -1,12 +1,14 @@
+<!-- Add task -->
 <div class="row my-3">
   <div class="col-auto">
     <button (click)="submitTodo(inputTodo.value)" class="btn btn-dark">
-      +
+      <fa-icon id="plus" [icon]="faPlus"></fa-icon>
     </button>
   </div>
+  <!-- input Column -->
   <div class="col">
     <input
-      class="form-control"
+      class="form-control form-control-lg"
       #inputTodo
       type="text"
       [(ngModel)]="emptyInput"
@@ -14,7 +16,7 @@
     />
   </div>
 </div>
-
+<!-- Tasks -->
 <div class="row">
   <div class="my-3">
     <ul class="list-group">
@@ -28,7 +30,7 @@
             id="flexCheckDefault"
           />
           <span class="task-item mx-2 align-middle">{{ task.name }}</span>
-
+          <!-- Delete button -->
           <button
             #delBtn
             (click)="delTask(task.id)"
@@ -40,5 +42,33 @@
         </div>
       </li>
     </ul>
+  </div>
+</div>
+
+<!-- Testing -->
+<div class="input-group">
+  <input
+    type="text"
+    class="form-control"
+    aria-label="Text input with dropdown button"
+  />
+  <div class="input-group-append">
+    <button
+      class="btn btn-outline-secondary dropdown-toggle"
+      type="button"
+      data-bs-toggle="dropdown"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Date
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Today</a>
+      <a class="dropdown-item" href="#">Tomorrow</a>
+      <a class="dropdown-item" href="#">This weekend</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Next week</a>
+    </div>
   </div>
 </div>
