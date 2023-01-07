@@ -1,12 +1,15 @@
 <!-- Add task -->
-<div class="row my-3">
+
+<!-- <div class="row my-3">
   <div class="col-auto">
     <button (click)="submitTodo(inputTodo.value)" class="btn btn-dark">
       <fa-icon id="plus" [icon]="faPlus"></fa-icon>
     </button>
-  </div>
-  <!-- input Column -->
-  <div class="col">
+  </div> -->
+
+<!-- input Column -->
+
+<!-- <div class="col">
     <input
       class="form-control form-control-lg"
       #inputTodo
@@ -15,7 +18,45 @@
       placeholder="Add task"
     />
   </div>
+</div> -->
+
+<div class="row my-3">
+  <div class="col">
+    <div class="input-group">
+      <button (click)="submitTodo(inputTodo.value)" class="btn btn-dark">
+        <fa-icon id="plus" [icon]="faPlus"></fa-icon>
+      </button>
+      <input
+        [(ngModel)]="emptyInput"
+        #inputTodo
+        placeholder="Add task"
+        type="text"
+        class="form-control"
+        aria-label="Text input with dropdown button"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Date
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Today</a>
+          <a class="dropdown-item" href="#">Tomorrow</a>
+          <a class="dropdown-item" href="#">This weekend</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Next week</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 <!-- Tasks -->
 <div class="row">
   <div class="my-3">
@@ -46,29 +87,3 @@
 </div>
 
 <!-- Testing -->
-<div class="input-group">
-  <input
-    type="text"
-    class="form-control"
-    aria-label="Text input with dropdown button"
-  />
-  <div class="input-group-append">
-    <button
-      class="btn btn-outline-secondary dropdown-toggle"
-      type="button"
-      data-bs-toggle="dropdown"
-      data-toggle="dropdown"
-      aria-haspopup="true"
-      aria-expanded="false"
-    >
-      Date
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Today</a>
-      <a class="dropdown-item" href="#">Tomorrow</a>
-      <a class="dropdown-item" href="#">This weekend</a>
-      <div role="separator" class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Next week</a>
-    </div>
-  </div>
-</div>
