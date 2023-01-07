@@ -1,12 +1,19 @@
-<input
-  class="form-control my-3"
-  #inputTodo
-  type="text"
-  [(ngModel)]="emptyInput"
-/>
-<button (click)="submitTodo(inputTodo.value)" class="btn btn-primary">
-  submit
-</button>
+<div class="row my-3">
+  <div class="col-auto">
+    <button (click)="submitTodo(inputTodo.value)" class="btn btn-dark">
+      +
+    </button>
+  </div>
+  <div class="col">
+    <input
+      class="form-control"
+      #inputTodo
+      type="text"
+      [(ngModel)]="emptyInput"
+      placeholder="Add task"
+    />
+  </div>
+</div>
 
 <div class="my-3">
   <ul class="list-group">

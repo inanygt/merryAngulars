@@ -2,8 +2,13 @@
   "todos": [
     {
       "id": 1,
+      "name": "get work done ",
+      "status": false
+    },
+    {
+      "id": 2,
       "name": "test",
-      "status": true
+      "status": false
     }
   ]
 }
