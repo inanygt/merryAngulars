@@ -15,29 +15,30 @@
   </div>
 </div>
 
-<div class="my-3">
-  <ul class="list-group">
-    <ng-container>
+<div class="row">
+  <div class="my-3">
+    <ul class="list-group">
       <li class="list-group-item" *ngFor="let task of tasks">
-        <input
-          (change)="checkTodo(task.id)"
-          type="checkbox"
-          class="form-check-input"
-          value=""
-          id="flexCheckDefault"
-        />
+        <div class="form-check">
+          <input
+            (change)="checkTodo(task.id)"
+            type="checkbox"
+            class="form-check-input my-2"
+            value=""
+            id="flexCheckDefault"
+          />
+          <span class="task-item mx-2 align-middle">{{ task.name }}</span>
 
-        {{ task.name }}
-
-        <button
-          #delBtn
-          (click)="delTask(task.id)"
-          id="delButton"
-          class="btn btn-danger"
-        >
-          X
-        </button>
+          <button
+            #delBtn
+            (click)="delTask(task.id)"
+            id="delButton"
+            class="btn btn-danger"
+          >
+            X
+          </button>
+        </div>
       </li>
-    </ng-container>
-  </ul>
+    </ul>
+  </div>
 </div>
